@@ -3,9 +3,9 @@ import useCurrencyInfo from "./Hooks/useCurrencyInfo"
 import { useState } from "react"
 
 function App() {
-  const [amount, setAmount] = useState(0)
-  const[from, setFrom]= useState("usd")
-  const[to, setTo]= useState("inr")
+  const [amount, setAmount] = useState()
+  const[from, setFrom]= useState("USD")
+  const[to, setTo]= useState("INR")
   const[convertedAmount, setConvertedAmount]= useState(0)
 
   const currencyInfo = useCurrencyInfo(from)
@@ -24,7 +24,8 @@ function App() {
 
   return (
     <div
-        className="w-full h-screen flex flex-wrap justify-center items-center bg-cover bg-no-repeat"
+        className="w-full h-screen flex flex-wrap justify-center items-center bg-cover bg-no-repeat" 
+        id = "root"
         style={{
             backgroundImage: `url('https://img.freepik.com/premium-vector/money-transfer-global-currency-stock-exchange-background_115579-579.jpg')`,
         }}
@@ -44,6 +45,7 @@ function App() {
                             amount={amount}
                             currencyOptions={options}
                             onCurrencyChange={(currency) => {setAmount(amount)}}
+                            onAmountChange={(amount) => {setAmount(amount)}}
                             selectCurrency={from}
                         />
                     </div>
